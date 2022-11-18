@@ -16,6 +16,8 @@ services:
         condition: service_completed_successfully
     volumes:
       - ./.env:/app/.env
+    links:
+      - postgres
   migrations:
     image: smirnoffserg/django-app:$GITHUB_REF_NAME-$GITHUB_RUN_ID
     depends_on:
@@ -24,6 +26,8 @@ services:
     volumes:
       - ./.env:/app/.env
     command: python manage.py migrate
+    links:
+      - postgres
   postgres:
     image: postgres:latest
     ports:

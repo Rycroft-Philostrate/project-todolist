@@ -17,6 +17,8 @@ services:
         condition: service_completed_successfully
     volumes:
       - ./.docker_env:/app/.env
+    links:
+      - postgres
   migrations:
     build:
       context: .
@@ -26,6 +28,8 @@ services:
     volumes:
       - ./.docker_env:/app/.env
     command: python manage.py migrate
+    links:
+      - postgres
   postgres:
     image: postgres:latest
     ports:
