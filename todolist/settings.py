@@ -77,8 +77,16 @@ WSGI_APPLICATION = 'todolist.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
-DATABASES = {"default": env.db()}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        "HOST": os.environ.get("POSTGRES_HOST", "localhost"),
+        "NAME": os.environ.get("POSTGRES_NAME", "postgres"),
+        "PORT": os.environ.get("POSTGRES_PORT", "5432"),
+        "USER": os.environ.get("POSTGRES_USER", "postgres"),
+        "PASSWORD": os.environ.get("POSTGRES_PASSWORD", "postgres"),
+    }
+}
 
 AUTH_USER_MODEL = "core.User"
 
