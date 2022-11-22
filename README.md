@@ -20,6 +20,11 @@
 2. Скачать проект и положить в любую папку.
 3. Создать файл `.env` в папке приложения и указать данные environment:
    ```
+   POSTGRES_USER=<login>
+   POSTGRES_PASSWORD=<password>
+   POSTGRES_DB=<имя БД>
+   POSTGRES_PORT=<порт БД>
+   POSTGRES_HOST=<адрес БД>
    DATABASE_URL=psql://<login>:<password>@<адрес БД>:<порт>/<имя БД>
    ```
 4. Установить зависимости, выполнив команду находясь в папку с приложением:
