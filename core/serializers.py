@@ -31,7 +31,7 @@ class CreateUserSerializer(serializers.ModelSerializer):
         password_repeat = data.pop("password_repeat", None)
         if password != password_repeat:
             raise ValidationError("Password and password_repeat don't match")
-        if not User.objects.filter(username=username).exists():
+        if User.objects.filter(username=username).exists():
             raise ValidationError("Username is already in use")
         return data
 
