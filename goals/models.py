@@ -54,6 +54,9 @@ class BoardParticipant(DatesModelMixin):
         verbose_name="Роль", choices=Role.choices, default=Role.owner
     )
 
+    editable_choices = Role.choices
+    editable_choices.pop(0)
+
 
 class GoalCategory(DatesModelMixin):
     class Meta:

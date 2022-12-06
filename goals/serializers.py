@@ -1,6 +1,7 @@
 from django.db import transaction
 from rest_framework import serializers
 
+from core.models import User
 from core.serializers import UserSerializer
 from goals.models import GoalCategory, Goal, GoalComment, BoardParticipant, Board
 
