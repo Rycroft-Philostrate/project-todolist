@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   front:
-    image: sermalenk/skypro-front:lesson-37
+    image: sermalenk/skypro-front:lesson-38
     ports:
       - 80:80
     depends_on:
@@ -18,6 +18,14 @@ services:
       - ./.env:/app/.env
     links:
       - postgres
+  bot:
+    image: smirnoffserg/django-app:$GITHUB_REF_NAME-$GITHUB_RUN_ID
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./.env:/app/.env
+    command: python manage.py runbot
   migrations:
     image: smirnoffserg/django-app:$GITHUB_REF_NAME-$GITHUB_RUN_ID
     depends_on:
