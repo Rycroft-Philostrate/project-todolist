@@ -43,8 +43,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core',
     'goals',
-    "rest_framework",
-    "social_django",
+    'rest_framework',
+    'social_django',
+    'bot',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -83,7 +85,7 @@ WSGI_APPLICATION = 'todolist.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        "HOST": os.environ.get("POSTGRES_HOST", "postgres"),
+        "HOST": os.environ.get("POSTGRES_HOST", "localhost"),
         "NAME": os.environ.get("POSTGRES_BD", "postgres"),
         "PORT": os.environ.get("POSTGRES_PORT", "5432"),
         "USER": os.environ.get("POSTGRES_USER", "postgres"),
@@ -143,6 +145,8 @@ LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
+
+USE_L10N = True
 
 USE_TZ = True
 

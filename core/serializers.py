@@ -25,7 +25,7 @@ class CreateUserSerializer(serializers.ModelSerializer):
             "password_repeat",
         )
 
-    def validate(self, data):
+    def validate(self, data: dict):
         username = data.get("username")
         password = data.get("password")
         password_repeat = data.pop("password_repeat", None)
@@ -45,7 +45,7 @@ class LoginSerializer(serializers.Serializer):
     username = serializers.CharField(write_only=True)
     password = serializers.CharField(write_only=True)
 
-    def validate(self, data):
+    def validate(self, data: dict):
         username = data.get("username")
         password = data.get("password")
         user = authenticate(username=username, password=password)
@@ -77,14 +77,14 @@ class UpdatePasswordSerializer(serializers.ModelSerializer):
         read_only_fields = ("id",)
         fields = ("old_password", "new_password")
 
-    def validate(self, data):
+    def validate(self, data: dict):
         old_password = data.get("old_password")
         user = self.instance
         if not user.check_password(old_password):
             raise ValidationError({"old_password": "field not correct"})
         return data
 
-    def update(self, example, validated_data):
+    def update(self, example: User, validated_data):
         example.set_password(validated_data["new_password"])
         example.save(update_fields=["password"])
         return example
