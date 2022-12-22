@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'todolist.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        "HOST": os.environ.get("POSTGRES_HOST", "localhost"),
+        "HOST": os.environ.get("POSTGRES_HOST", "postgres"),
         "NAME": os.environ.get("POSTGRES_BD", "postgres"),
         "PORT": os.environ.get("POSTGRES_PORT", "5432"),
         "USER": os.environ.get("POSTGRES_USER", "postgres"),
