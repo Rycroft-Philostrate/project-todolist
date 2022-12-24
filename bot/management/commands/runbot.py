@@ -1,10 +1,10 @@
-from django.conf import settings
 from django.core.management import BaseCommand
 
 from bot.models import TgUser
 from bot.tg.client import TgClient
 from bot.tg.dc import Message
 from goals.models import Goal
+from todolist import settings
 
 
 class Command(BaseCommand):
